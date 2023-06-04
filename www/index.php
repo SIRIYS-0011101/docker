@@ -1,3 +1,5 @@
+<!-- put in ./www directory -->
+
 <html>
  <head>
   <title>Hello...</title>
@@ -40,6 +42,7 @@
     echo '</table>';
 
     $result->close();
+
     mysqli_close($conn);
 
     try {
@@ -48,7 +51,7 @@
         $query = "SELECT * FROM person;";
         $result = $pgsqlConn->query($query);
 
-        if ($result !== false) {
+        if ($result !== null) {
             echo '<table class="table table-striped">';
             echo '<thead><tr><th></th><th>id</th><th>name</th></tr></thead>';
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -70,7 +73,6 @@
     } catch (PDOException $e) {
         echo "Failed to connect to PostgreSQL: " . $e->getMessage();
     }
-
     ?>
     </div>
 </body>
